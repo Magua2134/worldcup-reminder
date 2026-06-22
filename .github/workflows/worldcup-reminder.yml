@@ -5,6 +5,12 @@ on:
     # 每 30 分钟运行一次，覆盖所有比赛时间
     - cron: '*/30 * * * *'
   workflow_dispatch:  # 支持手动触发
+    inputs:
+      test_mode:
+        description: '测试模式（true=发测试通知）'
+        required: false
+        default: 'false'
+        type: string
 
 jobs:
   check-and-notify:
@@ -22,3 +28,8 @@ jobs:
         run: node WorldCupReminder.js
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          TEST_MODE: ${{ github.event.inputs.test_mode || 'false' }}
+
+      - name: 运行测试模式（手动触发专用）
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test_mode == 'true' }}
+        run: echo "✅ 测试模式已触发"
