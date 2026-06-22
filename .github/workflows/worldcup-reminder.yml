@@ -1,0 +1,24 @@
+name: 世界杯提醒
+
+on:
+  schedule:
+    # 每 30 分钟运行一次，覆盖所有比赛时间
+    - cron: '*/30 * * * *'
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  check-and-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 运行世界杯提醒脚本
+        run: node WorldCupReminder.js
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
