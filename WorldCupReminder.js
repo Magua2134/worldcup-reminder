@@ -277,8 +277,8 @@ function checkReminders() {
     for (const match of MATCH_SCHEDULE) {
         const matchTs = getMatchTimestamp(match);
 
-        // 开赛提醒：比赛开始时刻 ±1分钟窗口内，只发一条
-        if (nowTs >= matchTs - 60000 && nowTs < matchTs + 60000) {
+        // 开赛提醒：比赛开始时刻 ±3分钟窗口内（GitHub Actions可能延迟1-3分钟）
+        if (nowTs >= matchTs - 180000 && nowTs < matchTs + 180000) {
             reminders.push({
                 type: "kickoff",
                 match,
