@@ -20,139 +20,144 @@ const PUSHPLUS_TOKEN = process.env.PUSHPLUS_TOKEN || "1420970fdbf54d239d92249ed4
 
 // ==========================================
 // 【2026世界杯完整赛程】（北京时间 UTC+8）
-// 共 104 场，涵盖小组赛 → 决赛
+// 共 112 场，涵盖小组赛 → 决赛
 // 数据来源：FIFA官方 + 央视网
 // ==========================================
 
 const MATCH_SCHEDULE = [
-    // ==================== 小组赛阶段 (6月12日 - 6月28日) ====================
-
-    // --- 6月12日 ---
+    // ==================== 小组赛阶段 (6月11日 - 6月27日) ====================
+    // 数据来源：FIFA官方赛程 (BST→北京时间=BST+7)
+    // A组
     { month: 6, day: 12, hour: 3, minute: 0, match: "墨西哥 vs 南非 (A组)" },
     { month: 6, day: 12, hour: 10, minute: 0, match: "韩国 vs 捷克 (A组)" },
-
-    // --- 6月13日 ---
-    { month: 6, day: 13, hour: 3, minute: 0, match: "加拿大 vs 波黑 (B组)" },
-    { month: 6, day: 13, hour: 9, minute: 0, match: "美国 vs 巴拉圭 (D组)" },
-    { month: 6, day: 13, hour: 12, minute: 0, match: "澳大利亚 vs 土耳其 (D组)" },
-
-    // --- 6月14日 ---
-    { month: 6, day: 14, hour: 3, minute: 0, match: "卡塔尔 vs 瑞士 (B组)" },
-    { month: 6, day: 14, hour: 6, minute: 0, match: "巴西 vs 摩洛哥 (C组)" },
-    { month: 6, day: 14, hour: 9, minute: 0, match: "海地 vs 苏格兰 (C组)" },
-
-    // --- 6月15日 ---
-    { month: 6, day: 15, hour: 6, minute: 0, match: "沙特 vs 乌拉圭 (H组)" },
-    { month: 6, day: 15, hour: 7, minute: 0, match: "科特迪瓦 vs 厄瓜多尔 (E组)" },
-    { month: 6, day: 15, hour: 10, minute: 0, match: "德国 vs 库拉索 (E组)" },
-    { month: 6, day: 15, hour: 10, minute: 0, match: "附加赛胜者 vs 突尼斯 (F组)" },
-
-    // --- 6月16日 ---
-    { month: 6, day: 16, hour: 3, minute: 0, match: "荷兰 vs 日本 (F组)" },
-    { month: 6, day: 16, hour: 6, minute: 0, match: "西班牙 vs 佛得角 (H组)" },
-    { month: 6, day: 16, hour: 9, minute: 0, match: "伊朗 vs 新西兰 (G组)" },
-    { month: 6, day: 16, hour: 11, minute: 0, match: "比利时 vs 埃及 (G组)" },
-    { month: 6, day: 16, hour: 12, minute: 0, match: "奥地利 vs 约旦 (J组)" },
-
-    // --- 6月17日 ---
-    { month: 6, day: 17, hour: 6, minute: 0, match: "法国 vs 塞内加尔 (I组)" },
-    { month: 6, day: 17, hour: 9, minute: 0, match: "阿根廷 vs 阿尔及利亚 (J组)" },
-    { month: 6, day: 17, hour: 11, minute: 0, match: "伊拉克 vs 挪威 (I组)" },
-
-    // --- 6月18日 ---
-    { month: 6, day: 18, hour: 1, minute: 0, match: "葡萄牙 vs 刚果 (K组)" },
-    { month: 6, day: 18, hour: 7, minute: 0, match: "加纳 vs 巴拿马 (L组)" },
-    { month: 6, day: 18, hour: 10, minute: 0, match: "乌兹别克 vs 哥伦比亚 (K组)" },
-
-    // --- 6月19日 ---
     { month: 6, day: 19, hour: 0, minute: 0, match: "捷克 vs 南非 (A组)" },
-    { month: 6, day: 19, hour: 3, minute: 0, match: "瑞士 vs 波黑 (B组)" },
-    { month: 6, day: 19, hour: 6, minute: 0, match: "加拿大 vs 卡塔尔 (B组)" },
     { month: 6, day: 19, hour: 9, minute: 0, match: "墨西哥 vs 韩国 (A组)" },
-    { month: 6, day: 19, hour: 12, minute: 0, match: "土耳其 vs 巴拉圭 (D组)" },
-
-    // --- 6月20日 ---
-    { month: 6, day: 20, hour: 6, minute: 0, match: "苏格兰 vs 摩洛哥 (C组)" },
-    { month: 6, day: 20, hour: 9, minute: 0, match: "巴西 vs 海地 (C组)" },
-    { month: 6, day: 20, hour: 12, minute: 0, match: "美国 vs 澳大利亚 (D组)" },
-
-    // --- 6月21日 ---
-    { month: 6, day: 21, hour: 8, minute: 0, match: "厄瓜多尔 vs 库拉索 (E组)" },
-
-    // --- 6月22日 ---
-    { month: 6, day: 22, hour: 3, minute: 0, match: "德国 vs 法国 (焦点战)" },
-    { month: 6, day: 22, hour: 6, minute: 0, match: "乌拉圭 vs 佛得角 (H组)" },
-    { month: 6, day: 22, hour: 9, minute: 0, match: "新西兰 vs 埃及 (G组)" },
-    { month: 6, day: 22, hour: 11, minute: 0, match: "比利时 vs 伊朗 (G组)" },
-
-    // --- 6月23日 ---
-    { month: 6, day: 23, hour: 8, minute: 0, match: "挪威 vs 塞内加尔 (I组)" },
-    { month: 6, day: 23, hour: 11, minute: 0, match: "约旦 vs 阿尔及利亚 (J组)" },
-
-    // --- 6月24日 ---
-    { month: 6, day: 24, hour: 7, minute: 0, match: "巴拿马 vs 克罗地亚 (L组)" },
-    { month: 6, day: 24, hour: 10, minute: 0, match: "哥伦比亚 vs 刚果 (K组)" },
-
-    // --- 6月25日 ---
-    { month: 6, day: 25, hour: 3, minute: 0, match: "瑞士 vs 加拿大 (B组)" },
-    { month: 6, day: 25, hour: 3, minute: 0, match: "波黑 vs 卡塔尔 (B组)" },
-    { month: 6, day: 25, hour: 6, minute: 0, match: "苏格兰 vs 巴西 (C组)" },
-    { month: 6, day: 25, hour: 6, minute: 0, match: "摩洛哥 vs 海地 (C组)" },
     { month: 6, day: 25, hour: 9, minute: 0, match: "捷克 vs 墨西哥 (A组)" },
     { month: 6, day: 25, hour: 9, minute: 0, match: "南非 vs 韩国 (A组)" },
 
-    // --- 6月26日 ---
-    { month: 6, day: 26, hour: 7, minute: 0, match: "突尼斯 vs 荷兰 (F组)" },
+    // B组
+    { month: 6, day: 13, hour: 3, minute: 0, match: "加拿大 vs 波黑 (B组)" },
+    { month: 6, day: 14, hour: 3, minute: 0, match: "卡塔尔 vs 瑞士 (B组)" },
+    { month: 6, day: 19, hour: 3, minute: 0, match: "瑞士 vs 波黑 (B组)" },
+    { month: 6, day: 19, hour: 6, minute: 0, match: "加拿大 vs 卡塔尔 (B组)" },
+    { month: 6, day: 25, hour: 3, minute: 0, match: "瑞士 vs 加拿大 (B组)" },
+    { month: 6, day: 25, hour: 3, minute: 0, match: "波黑 vs 卡塔尔 (B组)" },
+
+    // C组
+    { month: 6, day: 14, hour: 6, minute: 0, match: "巴西 vs 摩洛哥 (C组)" },
+    { month: 6, day: 14, hour: 9, minute: 0, match: "海地 vs 苏格兰 (C组)" },
+    { month: 6, day: 20, hour: 6, minute: 0, match: "苏格兰 vs 摩洛哥 (C组)" },
+    { month: 6, day: 20, hour: 8, minute: 30, match: "巴西 vs 海地 (C组)" },
+    { month: 6, day: 25, hour: 6, minute: 0, match: "苏格兰 vs 巴西 (C组)" },
+    { month: 6, day: 25, hour: 6, minute: 0, match: "摩洛哥 vs 海地 (C组)" },
+
+    // D组
+    { month: 6, day: 13, hour: 9, minute: 0, match: "美国 vs 巴拉圭 (D组)" },
+    { month: 6, day: 13, hour: 12, minute: 0, match: "澳大利亚 vs 土耳其 (D组)" },
+    { month: 6, day: 19, hour: 12, minute: 0, match: "土耳其 vs 巴拉圭 (D组)" },
+    { month: 6, day: 20, hour: 3, minute: 0, match: "美国 vs 澳大利亚 (D组)" },
     { month: 6, day: 26, hour: 10, minute: 0, match: "土耳其 vs 美国 (D组)" },
     { month: 6, day: 26, hour: 10, minute: 0, match: "巴拉圭 vs 澳大利亚 (D组)" },
 
-    // --- 6月27日 ---
-    { month: 6, day: 27, hour: 3, minute: 0, match: "挪威 vs 法国 (I组)" },
-    { month: 6, day: 27, hour: 8, minute: 0, match: "佛得角 vs 沙特 (H组)" },
-    { month: 6, day: 27, hour: 8, minute: 0, match: "乌拉圭 vs 西班牙 (H组)" },
+    // E组
+    { month: 6, day: 15, hour: 1, minute: 0, match: "德国 vs 库拉索 (E组)" },
+    { month: 6, day: 15, hour: 7, minute: 0, match: "科特迪瓦 vs 厄瓜多尔 (E组)" },
+    { month: 6, day: 21, hour: 4, minute: 0, match: "德国 vs 科特迪瓦 (E组)" },
+    { month: 6, day: 21, hour: 8, minute: 0, match: "厄瓜多尔 vs 库拉索 (E组)" },
+    { month: 6, day: 26, hour: 4, minute: 0, match: "厄瓜多尔 vs 德国 (E组)" },
+    { month: 6, day: 26, hour: 4, minute: 0, match: "库拉索 vs 科特迪瓦 (E组)" },
+
+    // F组
+    { month: 6, day: 15, hour: 4, minute: 0, match: "荷兰 vs 日本 (F组)" },
+    { month: 6, day: 15, hour: 10, minute: 0, match: "瑞典 vs 突尼斯 (F组)" },
+    { month: 6, day: 20, hour: 12, minute: 0, match: "突尼斯 vs 日本 (F组)" },
+    { month: 6, day: 21, hour: 1, minute: 0, match: "荷兰 vs 瑞典 (F组)" },
+    { month: 6, day: 26, hour: 7, minute: 0, match: "日本 vs 瑞典 (F组)" },
+    { month: 6, day: 26, hour: 7, minute: 0, match: "突尼斯 vs 荷兰 (F组)" },
+
+    // G组
+    { month: 6, day: 16, hour: 3, minute: 0, match: "比利时 vs 埃及 (G组)" },
+    { month: 6, day: 16, hour: 9, minute: 0, match: "伊朗 vs 新西兰 (G组)" },
+    { month: 6, day: 22, hour: 3, minute: 0, match: "比利时 vs 伊朗 (G组)" },
+    { month: 6, day: 22, hour: 9, minute: 0, match: "新西兰 vs 埃及 (G组)" },
     { month: 6, day: 27, hour: 11, minute: 0, match: "埃及 vs 伊朗 (G组)" },
     { month: 6, day: 27, hour: 11, minute: 0, match: "新西兰 vs 比利时 (G组)" },
 
-    // --- 6月28日 ---
-    { month: 6, day: 28, hour: 7, minute: 0, match: "哥伦比亚 vs 葡萄牙 (K组)" },
-    { month: 6, day: 28, hour: 7, minute: 0, match: "刚果 vs 乌兹别克 (K组)" },
+    // H组
+    { month: 6, day: 16, hour: 0, minute: 0, match: "西班牙 vs 佛得角 (H组)" },
+    { month: 6, day: 16, hour: 6, minute: 0, match: "沙特 vs 乌拉圭 (H组)" },
+    { month: 6, day: 22, hour: 0, minute: 0, match: "西班牙 vs 沙特 (H组)" },
+    { month: 6, day: 22, hour: 6, minute: 0, match: "乌拉圭 vs 佛得角 (H组)" },
+    { month: 6, day: 27, hour: 8, minute: 0, match: "佛得角 vs 沙特 (H组)" },
+    { month: 6, day: 27, hour: 8, minute: 0, match: "乌拉圭 vs 西班牙 (H组)" },
+
+    // I组
+    { month: 6, day: 17, hour: 3, minute: 0, match: "法国 vs 塞内加尔 (I组)" },
+    { month: 6, day: 17, hour: 6, minute: 0, match: "伊拉克 vs 挪威 (I组)" },
+    { month: 6, day: 23, hour: 5, minute: 0, match: "法国 vs 伊拉克 (I组)" },
+    { month: 6, day: 23, hour: 8, minute: 0, match: "挪威 vs 塞内加尔 (I组)" },
+    { month: 6, day: 27, hour: 3, minute: 0, match: "挪威 vs 法国 (I组)" },
+    { month: 6, day: 27, hour: 3, minute: 0, match: "塞内加尔 vs 伊拉克 (I组)" },
+
+    // J组
+    { month: 6, day: 16, hour: 12, minute: 0, match: "奥地利 vs 约旦 (J组)" },
+    { month: 6, day: 17, hour: 9, minute: 0, match: "阿根廷 vs 阿尔及利亚 (J组)" },
+    { month: 6, day: 23, hour: 1, minute: 0, match: "阿根廷 vs 奥地利 (J组)" },
+    { month: 6, day: 23, hour: 11, minute: 0, match: "约旦 vs 阿尔及利亚 (J组)" },
     { month: 6, day: 28, hour: 10, minute: 0, match: "阿尔及利亚 vs 奥地利 (J组)" },
     { month: 6, day: 28, hour: 10, minute: 0, match: "约旦 vs 阿根廷 (J组)" },
 
-    // ==================== 淘汰赛阶段 ====================
+    // K组
+    { month: 6, day: 18, hour: 1, minute: 0, match: "葡萄牙 vs 刚果(金) (K组)" },
+    { month: 6, day: 18, hour: 10, minute: 0, match: "乌兹别克 vs 哥伦比亚 (K组)" },
+    { month: 6, day: 24, hour: 1, minute: 0, match: "葡萄牙 vs 乌兹别克 (K组)" },
+    { month: 6, day: 24, hour: 10, minute: 0, match: "哥伦比亚 vs 刚果(金) (K组)" },
+    { month: 6, day: 28, hour: 7, minute: 30, match: "哥伦比亚 vs 葡萄牙 (K组)" },
+    { month: 6, day: 28, hour: 7, minute: 30, match: "刚果(金) vs 乌兹别克 (K组)" },
 
-    // 1/16决赛 (6月29日 - 7月4日)
+    // L组
+    { month: 6, day: 18, hour: 4, minute: 0, match: "英格兰 vs 克罗地亚 (L组)" },
+    { month: 6, day: 18, hour: 7, minute: 0, match: "加纳 vs 巴拿马 (L组)" },
+    { month: 6, day: 24, hour: 4, minute: 0, match: "英格兰 vs 加纳 (L组)" },
+    { month: 6, day: 24, hour: 7, minute: 0, match: "巴拿马 vs 克罗地亚 (L组)" },
+    { month: 6, day: 28, hour: 5, minute: 0, match: "巴拿马 vs 英格兰 (L组)" },
+    { month: 6, day: 28, hour: 5, minute: 0, match: "克罗地亚 vs 加纳 (L组)" },
+
+    // ==================== 淘汰赛阶段 (6月28日 - 7月20日) ====================
+
+    // 1/16决赛 (Round of 32)
     { month: 6, day: 29, hour: 1, minute: 0, match: "1/16决赛 第1场" },
-    { month: 6, day: 29, hour: 8, minute: 0, match: "1/16决赛 第2场" },
-    { month: 6, day: 29, hour: 11, minute: 0, match: "1/16决赛 第3场" },
-
-    { month: 6, day: 30, hour: 1, minute: 0, match: "1/16决赛 第4场" },
-    { month: 6, day: 30, hour: 8, minute: 0, match: "1/16决赛 第5场" },
-    { month: 6, day: 30, hour: 11, minute: 0, match: "1/16决赛 第6场" },
-
-    { month: 7, day: 1, hour: 1, minute: 0, match: "1/16决赛 第7场" },
-    { month: 7, day: 1, hour: 8, minute: 0, match: "1/16决赛 第8场" },
-    { month: 7, day: 1, hour: 11, minute: 0, match: "1/16决赛 第9场" },
-
-    { month: 7, day: 2, hour: 1, minute: 0, match: "1/16决赛 第10场" },
-    { month: 7, day: 2, hour: 8, minute: 0, match: "1/16决赛 第11场" },
-    { month: 7, day: 2, hour: 11, minute: 0, match: "1/16决赛 第12场" },
-
-    { month: 7, day: 3, hour: 1, minute: 0, match: "1/16决赛 第13场" },
-    { month: 7, day: 3, hour: 8, minute: 0, match: "1/16决赛 第14场" },
-    { month: 7, day: 3, hour: 11, minute: 0, match: "1/16决赛 第15场" },
-
-    { month: 7, day: 4, hour: 8, minute: 0, match: "1/16决赛 第16场" },
+    { month: 6, day: 29, hour: 4, minute: 0, match: "1/16决赛 第2场" },
+    { month: 6, day: 29, hour: 7, minute: 0, match: "1/16决赛 第3场" },
+    { month: 6, day: 29, hour: 10, minute: 0, match: "1/16决赛 第4场" },
+    { month: 6, day: 30, hour: 1, minute: 0, match: "1/16决赛 第5场" },
+    { month: 6, day: 30, hour: 4, minute: 0, match: "1/16决赛 第6场" },
+    { month: 6, day: 30, hour: 7, minute: 0, match: "1/16决赛 第7场" },
+    { month: 6, day: 30, hour: 10, minute: 0, match: "1/16决赛 第8场" },
+    { month: 7, day: 1, hour: 1, minute: 0, match: "1/16决赛 第9场" },
+    { month: 7, day: 1, hour: 4, minute: 0, match: "1/16决赛 第10场" },
+    { month: 7, day: 1, hour: 7, minute: 0, match: "1/16决赛 第11场" },
+    { month: 7, day: 1, hour: 10, minute: 0, match: "1/16决赛 第12场" },
+    { month: 7, day: 2, hour: 1, minute: 0, match: "1/16决赛 第13场" },
+    { month: 7, day: 2, hour: 4, minute: 0, match: "1/16决赛 第14场" },
+    { month: 7, day: 2, hour: 7, minute: 0, match: "1/16决赛 第15场" },
+    { month: 7, day: 2, hour: 10, minute: 0, match: "1/16决赛 第16场" },
+    { month: 7, day: 3, hour: 1, minute: 0, match: "1/16决赛 第17场" },
+    { month: 7, day: 3, hour: 4, minute: 0, match: "1/16决赛 第18场" },
+    { month: 7, day: 3, hour: 7, minute: 0, match: "1/16决赛 第19场" },
+    { month: 7, day: 3, hour: 10, minute: 0, match: "1/16决赛 第20场" },
+    { month: 7, day: 4, hour: 1, minute: 0, match: "1/16决赛 第21场" },
+    { month: 7, day: 4, hour: 4, minute: 0, match: "1/16决赛 第22场" },
+    { month: 7, day: 4, hour: 7, minute: 0, match: "1/16决赛 第23场" },
+    { month: 7, day: 4, hour: 10, minute: 0, match: "1/16决赛 第24场" },
 
     // 1/8决赛 (7月5日 - 7月8日)
     { month: 7, day: 5, hour: 3, minute: 0, match: "1/8决赛 第1场" },
     { month: 7, day: 5, hour: 7, minute: 0, match: "1/8决赛 第2场" },
     { month: 7, day: 5, hour: 11, minute: 0, match: "1/8决赛 第3场" },
-
     { month: 7, day: 6, hour: 3, minute: 0, match: "1/8决赛 第4场" },
     { month: 7, day: 6, hour: 7, minute: 0, match: "1/8决赛 第5场" },
     { month: 7, day: 6, hour: 11, minute: 0, match: "1/8决赛 第6场" },
-
     { month: 7, day: 7, hour: 3, minute: 0, match: "1/8决赛 第7场" },
     { month: 7, day: 7, hour: 7, minute: 0, match: "1/8决赛 第8场" },
 
