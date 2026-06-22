@@ -2,8 +2,8 @@ name: 世界杯提醒
 
 on:
   schedule:
-    # 每 30 分钟运行一次，覆盖所有比赛时间
-    - cron: '*/30 * * * *'
+    # 每 15 分钟运行一次，配合15分钟提醒窗口，确保不错过任何比赛
+    - cron: '*/15 * * * *'
   workflow_dispatch:  # 支持手动触发
     inputs:
       test_mode:
