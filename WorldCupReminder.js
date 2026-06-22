@@ -313,6 +313,31 @@ async function main() {
     console.log(`📋 共加载 ${MATCH_SCHEDULE.length} 场比赛`);
     console.log("========================================");
 
+    // 测试模式：强制发一条测试通知
+    if (process.env.TEST_MODE === "true") {
+        console.log("🧪 测试模式：发送测试通知...");
+        const next = findNextMatch();
+        const nextStr = next
+            ? `${next.match.match} - ${String(next.match.hour).padStart(2, "0")}:${String(next.match.minute).padStart(2, "0")}`
+            : "无后续比赛";
+        try {
+            await sendPushPlus(
+                "🧪 世界杯提醒 - 测试通知",
+                `🎉 测试推送成功！\n\n` +
+                `⏰ 当前北京时间: ${getBeijingNow().display}\n` +
+                `📋 赛程已加载 ${MATCH_SCHEDULE.length} 场比赛\n` +
+                `⚽ 下一场: ${nextStr}\n\n` +
+                `✅ GitHub Actions + PushPlus 配置正常！`
+            );
+            console.log("✅ 测试通知发送成功！");
+            console.log(`执行完毕，发送 1 条`);
+        } catch (e) {
+            console.error("❌ 测试通知发送失败:", e.message);
+            console.log(`执行完毕，发送 0 条`);
+        }
+        process.exit(0);
+    }
+
     const reminders = checkReminders();
 
     if (reminders.length === 0) {
